@@ -375,9 +375,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(212, 165, 165, 0.9) 100%);
+            background: linear-gradient(to bottom, transparent 0%, rgba(58, 58, 58, 0.95) 100%);
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: flex-end;
             padding: 2rem;
             opacity: 0;
             transition: opacity 0.5s;
@@ -400,6 +401,143 @@
             color: white;
             opacity: 0.9;
             letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .client-quote {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--blush);
+            line-height: 1.6;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .client-quote::before {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        .client-quote::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        /* Modal Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            color: var(--charcoal);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--rose);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            letter-spacing: 2px;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .modal-gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 4/3;
+            background: var(--charcoal);
+        }
+
+        .modal-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .modal-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal-gallery-item:nth-child(1),
+        .modal-gallery-item:nth-child(5) {
+            aspect-ratio: 3/4;
+        }
+
+        .modal-gallery-item:nth-child(3) {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        @media (max-width: 768px) {
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-gallery-item:nth-child(3) {
+                grid-column: span 1;
+            }
         }
 
         /* About Section */
@@ -789,57 +927,63 @@
         </div>
 
         <div class="gallery">
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('emma-james')">
                 <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&h=1000&fit=crop&q=80" alt="Wedding ceremony">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Emma & James</h3>
                         <p>Tuscany Villa Wedding</p>
+                        <div class="client-quote">Isabella captured every precious moment perfectly. Her eye for detail and ability to make us feel comfortable resulted in stunning photos we'll treasure forever.</div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('sofia-lucas')">
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=800&fit=crop&q=80" alt="First dance">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Sofia & Lucas</h3>
                         <p>Garden Reception</p>
+                        <div class="client-quote">We couldn't have asked for a better photographer! Isabella's romantic style and professionalism made our day absolutely magical. Highly recommend!</div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('olivia-noah')">
                 <img src="https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=800&h=1067&fit=crop&q=80" alt="Couple portraits">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Olivia & Noah</h3>
                         <p>Countryside Elegance</p>
+                        <div class="client-quote">Isabella has an incredible talent for capturing genuine emotion. Every photo tells our love story beautifully. We're so grateful for these memories!</div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('ava-william')">
                 <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&h=800&fit=crop&q=80" alt="Wedding details">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Ava & William</h3>
                         <p>Seaside Ceremony</p>
+                        <div class="client-quote">From start to finish, Isabella was amazing! She captured the essence of our day with such grace and artistry. Our photos are absolutely breathtaking.</div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('charlotte-henry')">
                 <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&h=1000&fit=crop&q=80" alt="Wedding reception">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Charlotte & Henry</h3>
                         <p>Vineyard Wedding</p>
+                        <div class="client-quote">Isabella's work is simply stunning! She made us feel so natural and relaxed, resulting in authentic, beautiful images that exceeded all expectations.</div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openGallery('mia-alexander')">
                 <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=1067&fit=crop&q=80" alt="Golden hour photos">
                 <div class="gallery-overlay">
                     <div class="gallery-info">
                         <h3>Mia & Alexander</h3>
                         <p>Lakeside Romance</p>
+                        <div class="client-quote">Working with Isabella was a dream! Her creative vision and warm personality shine through in every photograph. We couldn't be happier with the results!</div>
                     </div>
                 </div>
             </div>
@@ -961,7 +1105,7 @@
                 <div class="contact-method">
                     <div class="contact-method-icon">📧</div>
                     <h4>Email</h4>
-                    <a href="mailto:hello@isabellarose.ch">hello@isabellarose.ch</a>
+                    <a href="/cdn-cgi/l/email-protection#6e060b0202012e071d0f0c0b02020f1c011d0b400d06"><span class="__cf_email__" data-cfemail="7018151c1c1f3019031112151c1c11021f03155e1318">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-method">
                     <div class="contact-method-icon">📱</div>
@@ -977,6 +1121,14 @@
         </div>
     </section>
 
+    <!-- Modal Gallery -->
+    <div id="modal" class="modal">
+        <button class="modal-close" onclick="closeGallery()">×</button>
+        <div class="modal-content" id="modalContent">
+            <!-- Content will be populated by JavaScript -->
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-logo">ISABELLA ROSE</div>
@@ -988,7 +1140,157 @@
         <p class="footer-text">© 2026 Isabella Rose Photography. All rights reserved.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Gallery data - each wedding has 10 photos
+        const galleries = {
+            'emma-james': {
+                title: 'Emma & James',
+                location: 'Tuscany Villa Wedding',
+                images: [
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'sofia-lucas': {
+                title: 'Sofia & Lucas',
+                location: 'Garden Reception',
+                images: [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'olivia-noah': {
+                title: 'Olivia & Noah',
+                location: 'Countryside Elegance',
+                images: [
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'ava-william': {
+                title: 'Ava & William',
+                location: 'Seaside Ceremony',
+                images: [
+                    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'charlotte-henry': {
+                title: 'Charlotte & Henry',
+                location: 'Vineyard Wedding',
+                images: [
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'mia-alexander': {
+                title: 'Mia & Alexander',
+                location: 'Lakeside Romance',
+                images: [
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=900&fit=crop&q=80'
+                ]
+            }
+        };
+
+        // Open gallery modal
+        function openGallery(galleryId) {
+            const gallery = galleries[galleryId];
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let imagesHTML = '';
+            gallery.images.forEach(img => {
+                imagesHTML += `
+                    <div class="modal-gallery-item">
+                        <img src="${img}" alt="${gallery.title}">
+                    </div>
+                `;
+            });
+            
+            modalContent.innerHTML = `
+                <div class="modal-header">
+                    <h2>${gallery.title}</h2>
+                    <p>${gallery.location}</p>
+                </div>
+                <div class="modal-gallery">
+                    ${imagesHTML}
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close gallery modal
+        function closeGallery() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeGallery();
+            }
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1023,6 +1325,3 @@
                 this.style.zIndex = '1';
             });
         });
-    </script>
-</body>
-</html>
