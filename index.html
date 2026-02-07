@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Rose Photography - Wedding Photographer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #FFFEF7;
+            --blush: #E8CFC4;
+            --rose: #D4A5A5;
+            --sage: #A8B5A0;
+            --charcoal: #3A3A3A;
+            --soft-gray: #F5F3F0;
+            --deep-rose: #B88B88;
+            --gold: #C9A87C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(232, 207, 196, 0.02) 2px, rgba(232, 207, 196, 0.02) 4px);
+        }
+
+        /* Elegant cursor */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="rgba(212, 165, 165, 0.3)" stroke="rgba(212, 165, 165, 0.8)" stroke-width="1"/></svg>'), auto;
+        }
+
+        a, button {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="rgba(212, 165, 165, 0.5)" stroke="rgba(212, 165, 165, 1)" stroke-width="2"/></svg>'), pointer;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(180deg, var(--ivory) 0%, rgba(255,254,247,0.98) 50%, rgba(255,254,247,0) 100%);
+            transition: all 0.5s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,254,247,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 4rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--charcoal);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--rose);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-rose);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background: transparent;
+            color: var(--charcoal);
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--rose);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.7s forwards;
+        }
+
+        .contact-btn:hover {
+            background: var(--rose);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 165, 165, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(255,254,247,0.9), rgba(255,254,247,0.85)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(232, 207, 196, 0.15) 0%, transparent 70%);
+            animation: floatSlow 25s infinite ease-in-out;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-100px, 50px) rotate(10deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 7rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--deep-rose);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            opacity: 0.85;
+            margin-bottom: 3rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.4s forwards;
+        }
+
+        .btn-primary {
+            background: var(--rose);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-rose);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 165, 165, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            padding: 1.2rem 3rem;
+            border: 1px solid var(--charcoal);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.8s forwards, bounce 2s infinite 2.8s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 4rem;
+            background: var(--soft-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--deep-rose);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Masonry Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 1;
+            background: var(--ivory);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:nth-child(1) { aspect-ratio: 4/5; }
+        .gallery-item:nth-child(2) { aspect-ratio: 1; }
+        .gallery-item:nth-child(3) { aspect-ratio: 3/4; }
+        .gallery-item:nth-child(4) { aspect-ratio: 1; }
+        .gallery-item:nth-child(5) { aspect-ratio: 4/5; }
+        .gallery-item:nth-child(6) { aspect-ratio: 3/4; }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(58, 58, 58, 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            font-size: 0.85rem;
+            color: white;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .client-quote {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--blush);
+            line-height: 1.6;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .client-quote::before {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        .client-quote::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--rose);
+        }
+
+        /* Modal Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            color: var(--charcoal);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--rose);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            letter-spacing: 2px;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .modal-gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            aspect-ratio: 4/3;
+            background: var(--charcoal);
+        }
+
+        .modal-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .modal-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal-gallery-item:nth-child(1),
+        .modal-gallery-item:nth-child(5) {
+            aspect-ratio: 3/4;
+        }
+
+        .modal-gallery-item:nth-child(3) {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        @media (max-width: 768px) {
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-gallery-item:nth-child(3) {
+                grid-column: span 1;
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 4rem;
+            background: var(--ivory);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: 30px;
+            bottom: 30px;
+            border: 1px solid var(--rose);
+            z-index: 0;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        .about-text h2 em {
+            font-style: italic;
+            color: var(--deep-rose);
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--deep-rose);
+            margin-top: 3rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 4rem;
+            background: var(--soft-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 4rem auto 0;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--ivory);
+            border-radius: 2px;
+            transition: all 0.4s;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--rose);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--deep-rose);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--sage);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 4rem;
+            background: var(--ivory);
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .testimonial {
+            padding: 3rem;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 1rem;
+            color: var(--deep-rose);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-date {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--soft-gray) 100%);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            opacity: 0.85;
+            margin-bottom: 3rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            text-align: center;
+        }
+
+        .contact-method-icon {
+            font-size: 2rem;
+            color: var(--deep-rose);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .contact-method a:hover {
+            color: var(--deep-rose);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--ivory);
+            padding: 4rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            color: var(--ivory);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: var(--rose);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">ISABELLA ROSE</div>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+        <button class="contact-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Wedding Photography</div>
+            <h1>Capturing <em>Love</em><br>In Its Purest Form</h1>
+            <p class="hero-description">
+                Every wedding tells a unique story of love, laughter, and joy. I'm here to preserve those fleeting moments—the stolen glances, happy tears, and pure celebration—into timeless memories you'll cherish forever.
+            </p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="btn-primary">View Portfolio</a>
+                <a href="#contact" class="btn-secondary">Book Your Date</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <div class="section-tag">Recent Works</div>
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-description">
+                A glimpse into the beautiful weddings I've had the honor to document. Each celebration is unique, and I strive to capture the authentic emotions and intimate moments that make your day special.
+            </p>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item" onclick="openGallery('emma-james')">
+                <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&h=1000&fit=crop&q=80" alt="Wedding ceremony">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Emma & James</h3>
+                        <p>Tuscany Villa Wedding</p>
+                        <div class="client-quote">Isabella captured every precious moment perfectly. Her eye for detail and ability to make us feel comfortable resulted in stunning photos we'll treasure forever.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openGallery('sofia-lucas')">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=800&fit=crop&q=80" alt="First dance">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Sofia & Lucas</h3>
+                        <p>Garden Reception</p>
+                        <div class="client-quote">We couldn't have asked for a better photographer! Isabella's romantic style and professionalism made our day absolutely magical. Highly recommend!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openGallery('olivia-noah')">
+                <img src="https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=800&h=1067&fit=crop&q=80" alt="Couple portraits">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Olivia & Noah</h3>
+                        <p>Countryside Elegance</p>
+                        <div class="client-quote">Isabella has an incredible talent for capturing genuine emotion. Every photo tells our love story beautifully. We're so grateful for these memories!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openGallery('ava-william')">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&h=800&fit=crop&q=80" alt="Wedding details">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Ava & William</h3>
+                        <p>Seaside Ceremony</p>
+                        <div class="client-quote">From start to finish, Isabella was amazing! She captured the essence of our day with such grace and artistry. Our photos are absolutely breathtaking.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openGallery('charlotte-henry')">
+                <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&h=1000&fit=crop&q=80" alt="Wedding reception">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Charlotte & Henry</h3>
+                        <p>Vineyard Wedding</p>
+                        <div class="client-quote">Isabella's work is simply stunning! She made us feel so natural and relaxed, resulting in authentic, beautiful images that exceeded all expectations.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openGallery('mia-alexander')">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=1067&fit=crop&q=80" alt="Golden hour photos">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h3>Mia & Alexander</h3>
+                        <p>Lakeside Romance</p>
+                        <div class="client-quote">Working with Isabella was a dream! Her creative vision and warm personality shine through in every photograph. We couldn't be happier with the results!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=700&h=600&fit=crop" alt="Isabella Rose - Wedding Photographer">
+            </div>
+            <div class="about-text">
+                <h2>Hello, I'm <em>Isabella</em></h2>
+                <p>
+                    For over a decade, I've been documenting love stories around the world. Based in Switzerland, I travel wherever your journey takes you—whether it's an intimate ceremony in the Alps, a grand celebration in Tuscany, or a romantic elopement by the sea.
+                </p>
+                <p>
+                    My approach is organic and unobtrusive. I believe the most beautiful photographs happen when you're simply being yourselves—laughing, crying, dancing, and celebrating with the people you love most. I'm there to capture those genuine moments, not to stage them.
+                </p>
+                <p>
+                    Every couple has a unique story, and it's my privilege to tell yours through timeless, elegant imagery that you'll treasure for generations to come.
+                </p>
+                <div class="about-signature">— Isabella</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-tag">Investment</div>
+            <h2 class="section-title">Wedding Packages</h2>
+            <p class="section-description">
+                Each package is thoughtfully designed to suit different wedding styles and needs. All collections include high-resolution digital images and a personalized online gallery.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌸</div>
+                <h3>Intimate</h3>
+                <p class="service-price">Starting at CHF 2,500</p>
+                <p>Perfect for smaller celebrations and elopements with up to 50 guests.</p>
+                <ul class="service-features">
+                    <li>Up to 6 hours coverage</li>
+                    <li>300+ edited high-res images</li>
+                    <li>Online private gallery</li>
+                    <li>Pre-wedding consultation</li>
+                    <li>Print release</li>
+                </ul>
+                <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Inquire</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💐</div>
+                <h3>Complete</h3>
+                <p class="service-price">Starting at CHF 4,200</p>
+                <p>The most popular choice for full-day wedding coverage.</p>
+                <ul class="service-features">
+                    <li>Up to 10 hours coverage</li>
+                    <li>600+ edited high-res images</li>
+                    <li>Engagement session included</li>
+                    <li>Online private gallery</li>
+                    <li>Custom USB with all images</li>
+                    <li>Print release</li>
+                </ul>
+                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Book Now</button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">👑</div>
+                <h3>Luxury</h3>
+                <p class="service-price">Starting at CHF 6,800</p>
+                <p>Premium all-inclusive experience for your extraordinary celebration.</p>
+                <ul class="service-features">
+                    <li>Unlimited hours coverage</li>
+                    <li>1000+ edited high-res images</li>
+                    <li>Second photographer</li>
+                    <li>Engagement & bridal sessions</li>
+                    <li>Premium leather album</li>
+                    <li>Custom USB & online gallery</li>
+                    <li>Travel included (Europe)</li>
+                </ul>
+                <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Inquire</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <div class="section-tag">Kind Words</div>
+            <h2 class="section-title">What Couples Say</h2>
+        </div>
+
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Isabella captured our wedding day so beautifully. Every photo tells a story and brings back the emotions we felt. She has an incredible eye for those candid, intimate moments that made our day so special. We couldn't be happier!"
+                </p>
+                <div class="testimonial-author">Emma & James Thompson</div>
+                <div class="testimonial-date">Married June 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Let's Create Magic Together</h2>
+            <p>
+                I'd love to hear about your wedding plans and learn how I can help tell your unique love story. Whether you're planning an intimate gathering or a grand celebration, let's start a conversation.
+            </p>
+            <a href="#" class="btn-primary">Schedule a Consultation</a>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">📧</div>
+                    <h4>Email</h4>
+                    <a href="/cdn-cgi/l/email-protection#6e060b0202012e071d0f0c0b02020f1c011d0b400d06"><span class="__cf_email__" data-cfemail="7018151c1c1f3019031112151c1c11021f03155e1318">[email&#160;protected]</span></a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📱</div>
+                    <h4>Phone</h4>
+                    <a href="tel:+41791234567">+41 79 123 45 67</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📍</div>
+                    <h4>Location</h4>
+                    <a href="#">Zürich, Switzerland</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Gallery -->
+    <div id="modal" class="modal">
+        <button class="modal-close" onclick="closeGallery()">×</button>
+        <div class="modal-content" id="modalContent">
+            <!-- Content will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">ISABELLA ROSE</div>
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Pinterest">📌</a>
+            <a href="#" aria-label="Facebook">👥</a>
+        </div>
+        <p class="footer-text">© 2026 Isabella Rose Photography. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Gallery data - each wedding has 10 photos
+        const galleries = {
+            'emma-james': {
+                title: 'Emma & James',
+                location: 'Tuscany Villa Wedding',
+                images: [
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'sofia-lucas': {
+                title: 'Sofia & Lucas',
+                location: 'Garden Reception',
+                images: [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'olivia-noah': {
+                title: 'Olivia & Noah',
+                location: 'Countryside Elegance',
+                images: [
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'ava-william': {
+                title: 'Ava & William',
+                location: 'Seaside Ceremony',
+                images: [
+                    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'charlotte-henry': {
+                title: 'Charlotte & Henry',
+                location: 'Vineyard Wedding',
+                images: [
+                    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1529634027504-f0e7c3cc6e9a?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80'
+                ]
+            },
+            'mia-alexander': {
+                title: 'Mia & Alexander',
+                location: 'Lakeside Romance',
+                images: [
+                    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1525258437537-a5c87e28bc0b?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=1600&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&h=900&fit=crop&q=80',
+                    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200&h=900&fit=crop&q=80'
+                ]
+            }
+        };
+
+        // Open gallery modal
+        function openGallery(galleryId) {
+            const gallery = galleries[galleryId];
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+            
+            let imagesHTML = '';
+            gallery.images.forEach(img => {
+                imagesHTML += `
+                    <div class="modal-gallery-item">
+                        <img src="${img}" alt="${gallery.title}">
+                    </div>
+                `;
+            });
+            
+            modalContent.innerHTML = `
+                <div class="modal-header">
+                    <h2>${gallery.title}</h2>
+                    <p>${gallery.location}</p>
+                </div>
+                <div class="modal-gallery">
+                    ${imagesHTML}
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close gallery modal
+        function closeGallery() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeGallery();
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gallery hover effects
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
